@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ super() }}
+     - 网尚周报
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>网尚周报</h1>
+        <hr/>
+
+        {% for wuye in wuye_list %}
+            <h2>{{ wuye }}市场</h2>
+            <h3>全市量价</h3>
+            {{ gxj[wuye]|safe }}
+            <h3>分板块</h3>
+            {{ plate[wuye]|safe }}
+            {% include "weekly/winsun_shuoli.html" %}
+            <br/>
+        {% endfor %}
+
+    </div>
+{% endblock %}
