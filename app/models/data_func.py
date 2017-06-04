@@ -6,16 +6,8 @@ def table2df(filename, sheet):
     from .file_path import STATIC_PATH
     path = f'{STATIC_PATH}/data/{filename}.xlsx'
 
-    # set columns
-    columns = list()
-    for each in ['上市', '认购', '已售']:
-        items = ['面积', '面积环比', '套数', '套数环比']
-        columns.extend(map(lambda x: f'{each}{x}', items))
-    columns.extend(['金额', '金额环比', '均价', '均价环比'])
-
     # read table to DateFrame
     df = pd.read_excel(path, sheet, index_col=0)
-    df.columns = columns
 
     # ㎡ to 万㎡
     for each in ['上市', '认购', '已售']:
