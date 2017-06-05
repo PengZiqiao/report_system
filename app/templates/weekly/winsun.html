@@ -17,8 +17,10 @@
             <h3>分板块</h3>
             {{ plate[wuye]|safe }}
             {% include "weekly/shuoli.html" %}
-            <h3>排行</h3>
-            {{ rank[wuye]|safe }}
+            {% if wuye != '别墅' %}
+                <h3>排行</h3>
+                {{ rank[wuye]|safe }}
+            {% endif %}
             <br/>
         {% endfor %}
 

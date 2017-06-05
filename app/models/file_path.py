@@ -1,1 +1,1 @@
-STATIC_PATH = 'F:/report_system/app/static'
+STATIC_PATH = r'E:\dell\Documents\Python_Projects\report_system\app\static'

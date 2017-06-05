@@ -6,14 +6,15 @@ from . import weekly
 @weekly.route('/winsun')
 def winsun():
     from app.weekly.models import LiangJia, Rank
-    wuye_list = ['住宅', '商业', '办公']
+    wuye_list = ['住宅', '商业', '办公', '别墅']
     gxj, plate, data, rank = dict(), dict(), dict(), dict()
     for wuye in wuye_list:
         lj = LiangJia('weekly', wuye)
         gxj[wuye] = lj.gxj_table()
         plate[wuye] = lj.plate_table()
         data[wuye] = lj.data_dict()
-        rank[wuye] = Rank('weekly', wuye).table()
+        if wuye != '别墅':
+            rank[wuye] = Rank('weekly', wuye).table()
     return render_template('weekly/winsun.html', **locals())
 
 
